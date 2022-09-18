@@ -18,13 +18,13 @@ spec:
         tier: mongodb
     spec:
       containers:
-      - name: {{ .Values.mongodbdeployment.name }}
-        image: {{ .Values.mongodbdeployment.image.repository }}:{{ .Values.mongodbdeployment.image.tag }}
+      - name: {{ .Values.mongodb.name }}
+        image: {{ .Values.mongodb.image.repository }}:{{ .Values.mongodb.image.tag }}
         ports:
-        - containerPort: {{ .Values.mongodbdeployment.image.port }}
+        - containerPort: {{ .Values.mongodb.image.port }}
         env:
         - name: MONGO_INITDB_ROOT_USERNAME
           value: admin
         - name: MONGO_INITDB_ROOT_PASSWORD
           value: admin
-      restartPolicy: {{ .Values.mongodbdeployment.image.restartPolicy }}
+      restartPolicy: {{ .Values.mongodb.image.restartPolicy }}
