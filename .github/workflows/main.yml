@@ -8,5 +8,10 @@ jobs:
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
+      - name: test bash
+        shell: bash
+        run: |
+            ls
+        
       - name: Checkout source code
         uses: actions/checkout@v2
