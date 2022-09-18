@@ -1,0 +1,8 @@
+com\example\backend\Service.class
+com\example\backend\Model.class
+com\example\backend\ServiceImpl.class
+com\example\backend\Repository.class
+com\example\backend\BackendApplication.class
+com\example\backend\Controller.class
+com\example\backend\Model$ModelBuilder.class
+com\example\backend\ModelDto.class
