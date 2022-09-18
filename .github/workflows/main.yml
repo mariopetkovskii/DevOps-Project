@@ -8,6 +8,7 @@ jobs:
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
+          command: ls
       - name: test bash
         shell: bash
         run: |
