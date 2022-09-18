@@ -28,5 +28,5 @@ spec:
             - name: MONGODB_PASSWORD
               value: admin
             - name: MONGODB_HOST
-              value: devops-project-2022-mongodb-service
+              value: mongo-service
 #          restartPolicy: {{ .Values.backend.image.restartPolicy }}
