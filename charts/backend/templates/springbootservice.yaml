@@ -3,7 +3,6 @@ kind: Service
 metadata:
   name: backend-service
 spec:
-  clusterIP: 10.98.232.79
   selector:
     app: backend
     tier: backend
