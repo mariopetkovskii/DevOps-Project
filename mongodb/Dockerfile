@@ -1,0 +1,5 @@
+FROM mongo
+
+WORKDIR /mongo
+
+EXPOSE 27017
