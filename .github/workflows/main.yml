@@ -16,3 +16,11 @@ jobs:
         
       - name: Checkout source code
         uses: actions/checkout@v2
+      - name: Setup helmfile
+        uses: mamezou-tech/setup-helmfile@v1.0.0
+      - name: Test
+        run: |
+            helmfile --version
+            helm version
+            ls
+        
