@@ -22,9 +22,10 @@ jobs:
             
             - name: Run a one-line script
               run: |
-                echo Hello
-                sleep 15
-                echo bye
+                git clone https://github.com/mariopetkovskii/DevOps-Project.git
+                cd DevOps-Project/charts
+                helm install mongo --generate-name
+                echo finish
         
 #       - name: Checkout source code
 #         uses: azure/setup-helm@v3
