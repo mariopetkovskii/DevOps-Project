@@ -27,7 +27,7 @@ jobs:
         
         - name: Docker push backend image
           run: |
-            docker build -t mariopetkovski/backend-spring-boot
+            docker mariopetkovski/backend-spring-boot
         
     
     deploy:
@@ -39,7 +39,7 @@ jobs:
             
             - name: Run scripts
               run: |
-                cd ../../DevOps-Project
+                cd ./DevOps-Project
                 git pull
                 cd charts
                 helm upgrade --install my-mongo mongo
