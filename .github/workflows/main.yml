@@ -1,19 +1,36 @@
 name: Azure Deploy
 on: [push]
+
 jobs:
-#     deploy:
-#       runs-on: ubuntu-latest
-#       steps:
-#       - name: Login to Azure
-#         uses: azure/login@v1
-#         with:
-#           creds: ${{ secrets.AZURE_CREDENTIALS }}
-#           command: ls
-#       - name: test bash
-#         shell: bash
-#         run: |
-#             helm install mongo --generate-name
     build:
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@v2
+    
+        - name: Login to DockerHub
+          uses: docker/login-actions@v1
+          with:
+            username: ${{ secrets.DOCKERHUB_USERNAME }}
+            passowrd: ${{ secrets.DOCKERHUB_TOKEN }}
+        
+        - name: Build database image
+          run: |
+            docker build -t mariopetkovski/mongo ./mongodb 
+            
+        - name: Build backend image
+          run: |
+            docker build -t mariopetkovski/backend-spring-boot ./backend
+        
+        - name: Docker push database image
+          run: |
+            docker push mariopetkovski/mongo
+        
+        - name: Docker push backend image
+          run: |
+            docker build -t mariopetkovski/backend-spring-boot
+        
+    
+    deploy:
         runs-on:
             - self-hosted
             - label-1
@@ -24,16 +41,10 @@ jobs:
               run: |
                 git clone https://github.com/mariopetkovskii/DevOps-Project.git
                 cd DevOps-Project/charts
-                helm install mongo --generate-name
-                helm install backend --generate-name
-                helm install prometheus --generate-name
-                helm install grafana --generate-name
+                helm install my-mongo mongo
+                helm install my-backend backend
+                helm install my-prometheus prometheus
+                helm install my-grafana grafana 
                 echo finish
         
-#       - name: Checkout source code
-#         uses: azure/setup-helm@v3
-#         with:
-#             version: latest # default is latest (stable)
-#             token: ${{ secrets.GITHUB_TOKEN }} # only needed if version is 'latest'
-#         id: install
-        
+
