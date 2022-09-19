@@ -15,12 +15,9 @@ jobs:
             pwd
         
       - name: Checkout source code
-        uses: actions/checkout@v2
-      - name: Setup helmfile
-        uses: mamezou-tech/setup-helmfile@v1.0.0
-      - name: Test
-        run: |
-            helmfile --version
-            helm version
-            ls
+        uses: azure/setup-helm@v3
+        with:
+            version: default # default is latest (stable)
+            token: ${{ secrets.GITHUB_TOKEN }} # only needed if version is 'latest'
+        id: install
         
