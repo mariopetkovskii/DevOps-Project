@@ -1,18 +1,30 @@
 name: Azure Deploy
 on: [push]
 jobs:
-    deploy:
-      runs-on: ubuntu-latest
-      steps:
-      - name: Login to Azure
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-          command: ls
-      - name: test bash
-        shell: bash
-        run: |
-            helm install mongo --generate-name
+#     deploy:
+#       runs-on: ubuntu-latest
+#       steps:
+#       - name: Login to Azure
+#         uses: azure/login@v1
+#         with:
+#           creds: ${{ secrets.AZURE_CREDENTIALS }}
+#           command: ls
+#       - name: test bash
+#         shell: bash
+#         run: |
+#             helm install mongo --generate-name
+    build:
+        runs-on:
+            - self-hosted
+            - label-1
+        steps:
+            - uses: actions/checkout@v2
+            
+            - name: Run a one-line script
+              run: |
+                echo Hello
+                sleep 15
+                echo bye
         
 #       - name: Checkout source code
 #         uses: azure/setup-helm@v3
