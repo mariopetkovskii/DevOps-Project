@@ -29,4 +29,4 @@ spec:
               value: admin
             - name: MONGODB_HOST
               value: mongo-service
-#          restartPolicy: {{ .Values.backend.image.restartPolicy }}
+      restartPolicy: {{ .Values.backend.image.restartPolicy }}

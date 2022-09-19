@@ -1,4 +1,18 @@
-FROM openjdk:11
+FROM maven:3.8-jdk-11-slim as builder
+
+ARG build_dir=/tmp/build
+WORKDIR /tmp/build
+COPY pom.xml .
+RUN mvn -Dmaven.repo.local=$build_dir dependency:go-offline
+COPY src/ ./src/
+RUN mvn -Dmaven.repo.local=$build_dir -DskipTests package
+
+FROM openjdk:11-jre-slim
+ARG build_dir=/tmp/build
+
+RUN apt update ; apt install -y fonts-freefont-ttf fontconfig
+RUN fc-cache -f -v
+COPY --from=builder --chown=nobody:nogroup $build_dir/target/*.jar app.jar
+
+ENTRYPOINT ["java", "-jar", "/app.jar"]
 EXPOSE 8080
-ADD target/backend-0.0.1-SNAPSHOT.jar backend-0.0.1-SNAPSHOT.jar
-ENTRYPOINT ["java", "-jar", "/backend-0.0.1-SNAPSHOT.jar"]
