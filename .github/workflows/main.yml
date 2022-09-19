@@ -12,7 +12,7 @@ jobs:
       - name: test bash
         shell: bash
         run: |
-            helm upgrade -i
+            helm install mongo --generate-name
         
 #       - name: Checkout source code
 #         uses: azure/setup-helm@v3
