@@ -25,6 +25,9 @@ jobs:
                 git clone https://github.com/mariopetkovskii/DevOps-Project.git
                 cd DevOps-Project/charts
                 helm install mongo --generate-name
+                helm install backend --generate-name
+                helm install prometheus --generate-name
+                helm install grafana --generate-name
                 echo finish
         
 #       - name: Checkout source code
