@@ -19,9 +19,9 @@ spec:
     spec:
       containers:
         - name: {{ .Values.backend.name }}
-          image: {{ .Values.backend.image.repository }}:{{ .Values.backend.image.tag }}
+          image: {{ .Values.backend.image }}:{{ .Values.backend.tag }}
           ports:
-            - containerPort: {{ .Values.backend.image.port }}
+            - containerPort: {{ .Values.backend.port }}
           env:
             - name: MONGODB_USER
               value: admin
@@ -29,4 +29,4 @@ spec:
               value: admin
             - name: MONGODB_HOST
               value: mongo-service
-      restartPolicy: {{ .Values.backend.image.restartPolicy }}
+      restartPolicy: {{ .Values.backend.restartPolicy }}

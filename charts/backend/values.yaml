@@ -1,12 +1,10 @@
 backend:
   name: backendspringboot
-  image:
-    repository: mariopetkovski/backend-spring-boot
-    tag: latest
-    restartPolicy: Always
-    port: 8080
+  image: mariopetkovski/backend-spring-boot
+  tag: latest
+  restartPolicy: Always
+  port: 8080
   service:
     name: springbootservice
-    port: 8080
 
 
