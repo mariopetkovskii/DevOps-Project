@@ -8,5 +8,5 @@ spec:
     tier: mongodb
   ports:
     - protocol: TCP
-      port: {{ .Values.mongodb.service.port }}
+      port: {{ .Values.mongodb.port }}
       targetPort: 27017

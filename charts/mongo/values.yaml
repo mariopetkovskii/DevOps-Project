@@ -1,10 +1,8 @@
 mongodb:
   name: mongodbdeployment
-  image:
-    repository: mariopetkovski/mongo
-    tag: latest
-    restartPolicy: Always
-    port: 27017
+  image: mariopetkovski/mongo
+  tag: latest
+  restartPolicy: Always
+  port: 27017
   service:
     name: mongodbservice
-    port: 27017
