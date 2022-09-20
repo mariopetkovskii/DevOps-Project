@@ -20,6 +20,14 @@ jobs:
         - name: Build backend image
           run: |
             docker build -t mariopetkovski/backend-spring-boot ./backend
+            
+        - name: Docker database tag
+          run: |
+            docker tag mariopetkovski/mongo mariopetkovski/mongo
+            
+        - name: Docker backend tag
+          run: |
+            docker tag mariopetkovski/backend-spring-boot mariopetkovski/backend-spring-boot
         
         - name: Docker push database image
           run: |
