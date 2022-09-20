@@ -56,6 +56,6 @@ jobs:
                 helm upgrade --install my-prometheus prometheus
                 helm upgrade --install my-grafana grafana 
                 kubectl rollout restart deployment backend-deployment
-                echo finish
+
         
 
